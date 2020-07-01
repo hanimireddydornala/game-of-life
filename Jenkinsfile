@@ -1,5 +1,5 @@
  pipeline{
-	agents any{
+	agents{label 'MASTER'}
 		triggers{
 			upstream(upstreamProjects: 'dummy', threshold: hudson.model.result.SUCCESS)
 		}
@@ -16,6 +16,5 @@
 				
 			}
 		}
-	}
 	
  }
