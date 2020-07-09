@@ -1,20 +1,18 @@
- pipeline{
-	agent{label 'MASTER'}
-		triggers{
-			upstream(upstreamProjects: 'dummy', threshold: hudson.model.result.SUCCESS)
-		}
-		stages{
-			stage('source'){
-				steps{
-					git url:'https://github.com/hanimireddydornala/game-of-life.git'
-				}
-			}
-			stage('package'){
-				steps{
-					sh 'mvn package'
-				}
-				
-			}
-		}
-	
- }
+pipeline {
+    agent any
+	triggers {
+	   upstream(upstreamProjects: 'dummy', threshold: hudson.model.Result.SUCCESS)
+	}
+    stages {
+        stage('Source'){
+            steps {
+                git 'https://github.com/hanimireddydornala/game-of-life.git' 
+            }
+        }
+        stage('Package'){
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+}
