@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'mvn package'
 		    input 'Continue to next step?'
-		    archiveArtifacts 'target/*.jar'
+		    archiveArtifacts 'target/*.war'
             }
         }
     }
